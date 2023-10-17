@@ -2,10 +2,17 @@ package com.todolist.todolist.domain.tarefa;
 
 import java.time.LocalDateTime;
 
+import org.hibernate.annotations.CreationTimestamp;
+
+import com.todolist.todolist.domain.usuario.Usuario;
+import com.todolist.todolist.enumerate.Prioridade;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
 
 @Entity(name="tarefa")
@@ -17,14 +24,24 @@ public class Tarefa {
     @Id
     private Long id;
 
-    @NotBlank
+    @NotEmpty
     private String tarefa_titulo;
 
-    @NotBlank
-    private LocalDateTime tarefa_prazo;
-
-    private boolean tarefa_feito;
+    @NotEmpty
+    private LocalDateTime tarefa_data_inicio;
     
-    @NotBlank
-    private Long id_usuario;
+    @CreationTimestamp
+    private LocalDateTime tarefa_data_fim;
+    
+    @CreationTimestamp
+    private boolean tarefa_feito;
+
+    private Prioridade prioridade;
+    
+    @NotEmpty
+
+    @ManyToOne
+    private Usuario usuario;
+
+    
 }

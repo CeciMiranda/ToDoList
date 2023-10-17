@@ -13,6 +13,6 @@ public class UsuarioController {
 
 @PostMapping("/")
     public void create( @RequestBody Usuario Usuario){
-        System.out.println(Usuario.nome);
+        System.out.println(Usuario.getNome());
     }
 }
