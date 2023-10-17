@@ -1,59 +1,30 @@
 package com.todolist.todolist.domain.tarefa;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
-import com.todolist.todolist.domain.usuario.Usuario;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import lombok.Data;
 
+@Entity(name="tarefa")
+@Table(name="tarefa")
+@Data
 
 public class Tarefa {
+
+    @Id
     private Long id;
-    private String titulo;
-    private Date prazo;
-    private Usuario usuario;
 
+    @NotBlank
+    private String tarefa_titulo;
 
-    public Tarefa() {
-    }
+    @NotBlank
+    private LocalDateTime tarefa_prazo;
 
-    public Tarefa(Long id, String titulo, Date prazo, Usuario usuario) {
-        this.id = id;
-        this.titulo = titulo;
-        this.prazo = prazo;
-        this.usuario = usuario;
-    }
-
-    public Long getId() {
-        return this.id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getTitulo() {
-        return this.titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
-    public Date getPrazo() {
-        return this.prazo;
-    }
-
-    public void setPrazo(Date prazo) {
-        this.prazo = prazo;
-    }
-
-    public Usuario getUsuario() {
-        return this.usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
-
+    private boolean tarefa_feito;
+    
+    @NotBlank
+    private Long id_usuario;
 }
-
-
