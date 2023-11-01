@@ -1,5 +1,10 @@
 package com.todolist.todolist.repository;
 
-public class TarefaRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.todolist.todolist.domain.tarefa.Tarefa;
+
+public interface TarefaRepository extends JpaRepository<Tarefa, Long> {
+
     
 }

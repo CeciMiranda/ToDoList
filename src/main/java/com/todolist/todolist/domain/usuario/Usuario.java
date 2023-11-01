@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.todolist.todolist.domain.tarefa.Tarefa;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,6 +17,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+
 import lombok.ToString;
 
 @Entity(name="usuario")
@@ -30,17 +32,20 @@ public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "usuario_id")
     private Long id;
 
     @NotBlank
     @Size(min=5,max=100)
+    @Column(name = "usuario_nome")
     private String nome;
 
     @NotBlank
     @Size(min=5,max=100)
+    @Column(name = "usuario_senha")
     private String senha;
     
-    @OneToMany
+    @OneToMany(mappedBy = "usuario")
     private List<Tarefa> tarefas;
 }
 
